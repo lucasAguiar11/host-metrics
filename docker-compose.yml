@@ -52,5 +52,10 @@ services:
       - /:/rootfs:ro
     ports:
       - 9100:9100
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.rootfs=/rootfs"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)"
     networks:
       monitoring:
