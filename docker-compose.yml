@@ -31,8 +31,12 @@ services:
     image: gcr.io/cadvisor/cadvisor:latest
     container_name: cadvisor
     privileged: true
+    restart: "no"
     ports:
       - 8080:8080
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
