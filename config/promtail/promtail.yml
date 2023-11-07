@@ -8,7 +8,7 @@ positions:
   filename: /tmp/positions.yaml
 
 clients:
-  - url: https://webhook.site/f47973fd-6aa8-48ab-84dd-f5c7ca418e0d
+  - url: http://10.0.2.19:3100/loki/api/v1/push
   
 scrape_configs:
   - job_name: flog_scrape
