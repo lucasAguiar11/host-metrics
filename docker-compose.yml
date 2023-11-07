@@ -1,7 +1,6 @@
 version: "3"
 
 networks:
-  otel:
   monitoring:
     driver: bridge
 
@@ -15,6 +14,9 @@ services:
     hostname: prometheus
     restart: unless-stopped
     command: [--log.level=debug, --config.file=/etc/prometheus/prometheus.yml]
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     ports:
       - 9090:9090
     volumes:
@@ -50,6 +52,9 @@ services:
     container_name: node-exporter
     restart: unless-stopped
     privileged: true
+    labels:
+      logging: "promtail"
+      logging_jobname: "containerlogs"
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
